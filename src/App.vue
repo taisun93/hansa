@@ -1,14 +1,22 @@
 <template>
-  <Gameboard msg="Welcome to Your Vue.js App"/>
+  <Gameboard :nodes="gameObject.map.nodes" :edges="gameObject.map.edges"/>
+  <PlayerBoard :players="gameObject.players" />
 </template>
 
 <script>
 import Gameboard from './components/GameBoard.vue'
-
+import {gameService} from '@/services/gameService.ts'
+import PlayerBoard from './components/PlayerBoard.vue';
 export default {
   name: 'App',
   components: {
-    Gameboard
+    Gameboard,
+    PlayerBoard
+  },
+  data() {
+    return{
+      gameObject: gameService.getGame()
+    } 
   }
 }
 </script>
