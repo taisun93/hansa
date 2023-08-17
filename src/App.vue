@@ -1,5 +1,5 @@
 <template>
-  <Gameboard :nodes="gameObject.map.nodes" :edges="gameObject.map.edges"/>
+  <Gameboard :nodes="gameObject.map.nodes" :edges="gameObject.map.edges" @spotClicked="handleSpotClick"/>
   <PlayerBoard :players="gameObject.players" />
 </template>
 

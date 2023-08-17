@@ -13,7 +13,7 @@
     <!-- Draw the inner rectangle (trader placement) inside spots -->
     <rect v-for="node in nodes.filter(n => n.type === 'spot')" :key="'inner-rect-' + node.id" :x="node.x - 8"
       :y="node.y - 8" width="16" height="16" :fill="node.filled ? 'red' : 'white'" stroke="black" stroke-width="1"
-      @click="toggleSpotFill(node)" />
+      @click="onSpotClick(node)" />
 
     <!-- Draw the nodes (main rectangle for cities) -->
     <rect v-for="node in nodes.filter(n => n.type === 'city')" :key="'main-rect-' + node.id" :x="node.x - 40"
@@ -56,12 +56,14 @@ export default {
     }
   },
   methods: {
-    toggleSpotFill(node) {
-      if (node.type === 'spot') {
-        node.filled = !node.filled;
+    onSpotClick(spot) {
+      // Check if the spot is empty
+      if (!spot.filled) {
+        this.$emit('spotClicked', spot);
       }
     }
   }
+
 
 }
 </script>

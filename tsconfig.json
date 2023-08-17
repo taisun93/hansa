@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "baseUrl": "./",
+      "outDir": "./dist",  // Output directory for your compiled TypeScript files
+      "strict": true,      // Enables all strict type-checking options
+      "esModuleInterop": true, // Allows default imports from modules with no default export
+      "skipLibCheck": true,    // Skip type checking of declaration files
+      "forceConsistentCasingInFileNames": true, // Avoid issues related to case-sensitive file names on case-insensitive file systems
+      "paths": {
+        "@/*": ["src/*"]
+      },
+      "lib": [
+        "esnext",
+        "dom",
+        "dom.iterable",
+        "scripthost"
+      ]
+    },
+    "include": [
+      "src/**/*.ts",     // Include all TypeScript files in src directory
+      "src/**/*.d.ts",   // Include all TypeScript definition files in src directory
+      "src/**/*.tsx",    // Include all TypeScript JSX files in src directory (only if you use JSX/React)
+      "src/**/*.vue"     // Include all Vue single-file components (only if you use Vue)
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }
+  
