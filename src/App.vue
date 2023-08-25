@@ -1,11 +1,11 @@
 <template>
-  <Gameboard :nodes="gameObject.map.nodes" :edges="gameObject.map.edges" @spotClicked="handleSpotClick"/>
+  <Gameboard :nodes="gameObject.map.nodes" :edges="gameObject.map.edges" @spotClicked="handleSpotClicked"/>
   <PlayerBoard :players="gameObject.players" />
 </template>
 
 <script>
 import Gameboard from './components/GameBoard.vue'
-import {gameService} from '@/services/gameService.ts'
+import gameServiceInstance from '@/services/gameService.ts'
 import PlayerBoard from './components/PlayerBoard.vue';
 export default {
   name: 'App',
@@ -15,8 +15,15 @@ export default {
   },
   data() {
     return{
-      gameObject: gameService.getGame()
+      gameObject: gameServiceInstance.game
     } 
+  },
+  methods: {
+    handleSpotClicked(node) {
+     gameServiceInstance.updateNode(node.id)
+     this.gameObject = gameServiceInstance.game
+     console.log(this.gameObject.map.nodes)
+    }
   }
 }
 </script>

@@ -44,6 +44,8 @@
 
 
 <script>
+// import { Watch } from 'vue-property-decorator';
+
 export default {
   props: {
     nodes: {
@@ -53,6 +55,15 @@ export default {
     edges: {
       type: Array,
       required: true
+    }
+  },
+  watch: {
+    nodes: {
+      handler(newNodes, oldNodes) {
+        console.log('Nodes changed!', newNodes, oldNodes);
+        // Handle nodes changes here...
+      },
+      deep: true
     }
   },
   methods: {
